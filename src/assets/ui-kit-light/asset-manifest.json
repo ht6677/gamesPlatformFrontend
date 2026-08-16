@@ -1,0 +1,31 @@
+{
+  "visualMaster": "src/assets/ui-reference/team-light-master.png",
+  "referenceSize": "941x1672",
+  "acceptanceViewport": "390x844",
+  "minimumVisualSimilarity": 0.9,
+  "completedStages": [1, 2, 3, 4, 5, 6],
+  "stage456": {
+    "navigationStates": "common/navigation/states",
+    "controlReferences": "common/controls",
+    "teamArt": "team/art",
+    "teamPanels": "team/panels",
+    "teamReferences": "team/references",
+    "tournamentArt": "tournament/art",
+    "tournamentPanels": "tournament/panels",
+    "tournamentReferences": "tournament/references",
+    "qa": "qa/stages-4-6-visual-review.md",
+    "exactCropSsimRange": "0.995741-0.998035"
+  },
+  "assets": [
+    { "path": "common/background/ice-vortex-portrait.png", "size": "941x1672", "method": "image-generation", "status": "accepted" },
+    { "path": "common/mascot/penguin-team-exact-3x.png", "size": "645x540", "method": "exact-crop-lanczos-3x", "status": "accepted" },
+    { "path": "common/title/team-title-style-reference-3x.png", "size": "915x420", "method": "exact-crop-lanczos-3x", "status": "accepted-reference-only" },
+    { "path": "common/title/team-header-master-reference-2x.png", "size": "1220x380", "method": "exact-crop-lanczos-2x", "status": "accepted-reference-only" },
+    { "path": "common/navigation/bottom-nav-frame-blank-2x.png", "size": "1842x286", "method": "image-edit", "status": "accepted" },
+    { "path": "common/navigation/bottom-nav-master-reference-2x.png", "size": "1842x286", "method": "exact-crop-lanczos-2x", "status": "accepted-reference-only" },
+    { "path": "common/navigation/icons/team-exact-3x.png", "size": "420x273", "method": "exact-crop-lanczos-3x", "status": "accepted" },
+    { "path": "common/navigation/icons/tournament-exact-3x.png", "size": "420x273", "method": "exact-crop-lanczos-3x", "status": "accepted" },
+    { "path": "common/navigation/icons/activities-exact-3x.png", "size": "420x273", "method": "exact-crop-lanczos-3x", "status": "accepted" },
+    { "path": "common/navigation/icons/profile-exact-3x.png", "size": "420x273", "method": "exact-crop-lanczos-3x", "status": "accepted" }
+  ]
+}
