@@ -14,6 +14,8 @@
 - **[新增]** `src/assets/ui-reference/` - 纳入组队大厅、赛事中心、个人中心三张高清定稿视觉基准图。
 - **[修改]** `vite.config.ts` - 设置 GitHub 项目站点基础路径 `/gamesPlatformFrontend/`；这是发布到仓库子路径必须修改的 `src/` 外配置例外，仅影响生产资源 URL。
 - **[修改]** `index.html` - 将站点图标切换为 Vite 的 `%BASE_URL%` 路径，避免 GitHub Pages 子目录部署后请求到域名根目录而产生 404；这是发布所需的 `src/` 外文件例外。
+- **[修改]** `package.json` - 固定已在本地构建通过的 TypeScript 6.0.3、`vue-tsc` 3.3.9 与当前开发工具版本，避免 GitHub Actions 使用 TypeScript 7 时触发 `ERR_PACKAGE_PATH_NOT_EXPORTED`；这是保证远端构建一致性的基础文件例外。
+- **[修改]** `yarn.lock` - 同步 `package.json` 的已验证依赖解析，保证 GitHub Actions 的 `yarn install --immutable` 可复现本地构建结果；这是部署所需的基础文件例外。
 - **[新增]** `.github/workflows/deploy-pages.yml` - 新增 GitHub Pages 自动构建与发布工作流；这是实现用户要求的 GitHub 域名发布所必需的 `src/` 外文件例外。
 - **[修正]** `.github/workflows/deploy-pages.yml` - 移除 `setup-node` 在 Corepack 启用前调用系统 Yarn 1 的缓存探测，确保工作流先启用 Corepack、再使用项目指定的 Yarn 4.18.0 安装依赖。
 - **[修改]** `docs.md` - 记录本次所有页面、素材及发布配置变更，并继续明确“日常开发优先只修改 `src/`，其他基础文件尽量不动”的最高优先级规则。
