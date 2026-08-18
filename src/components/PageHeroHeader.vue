@@ -1,14 +1,18 @@
 <script setup lang="ts">
-import heroPenguin from '@/assets/ui-kit-light/common/mascot/penguin-team-exact-3x.png'
-import heroVortex from '@/assets/ui-kit-light/common/background/ice-vortex-portrait.png'
+import heroMascot from '@/assets/tournament-center/hero-mascot.webp'
+import heroMountains from '@/assets/tournament-center/hero-mountains.webp'
+import heroRings from '@/assets/tournament-center/hero-rings.webp'
+import heroIceTexture from '@/assets/tournament-center/hero-ice-texture.webp'
 
 defineProps<{ title: string }>()
 </script>
 
 <template>
   <header class="page-hero">
-    <img class="hero-vortex" :src="heroVortex" alt="" />
-    <img class="hero-penguin" :src="heroPenguin" alt="九鼎电竞皇冠企鹅" />
+    <img class="hero-mountains" :src="heroMountains" alt="" />
+    <img class="hero-rings" :src="heroRings" alt="" />
+    <img class="hero-ice-texture" :src="heroIceTexture" alt="" />
+    <img class="hero-mascot" :src="heroMascot" alt="九鼎电竞猫头鹰" />
     <div class="hero-copy">
       <h1>{{ title }}</h1>
       <p><i></i><span>九鼎电竞</span><i></i></p>
@@ -18,40 +22,62 @@ defineProps<{ title: string }>()
 
 <style scoped>
 .page-hero {
-  position: relative;
-  height: 20cqw;
+  position: absolute;
+  z-index: 15;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 27.2cqw;
   overflow: hidden;
   background: #f5f9ff;
 }
 
-.hero-vortex {
+.hero-mountains {
   position: absolute;
-  inset: 0 0 auto auto;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 58% 48%;
 }
 
-.hero-penguin {
+.hero-rings {
   position: absolute;
-  left: 2.5%;
-  top: 1%;
-  width: 24%;
-  mix-blend-mode: multiply;
+  top: -31%;
+  right: 0;
+  width: 58%;
+  opacity: .55;
+}
+
+.hero-ice-texture {
+  position: absolute;
+  top: -72%;
+  left: -16%;
+  width: 55%;
+  opacity: .3;
+}
+
+.hero-mascot {
+  position: absolute;
+  left: 2.6%;
+  top: 0;
+  width: 24.5%;
+  height: 25cqw;
+  object-fit: contain;
 }
 
 .hero-copy {
   position: absolute;
-  top: 15%;
-  left: 25%;
-  width: 36%;
+  top: 17%;
+  left: 27.2%;
+  width: 31%;
   color: #0b2459;
   text-align: center;
 }
 
 .hero-copy h1 {
   margin: 0;
-  font-size: 7.7cqw;
+  font-size: 6.85cqw;
   font-weight: 900;
   line-height: 1;
   white-space: nowrap;
@@ -59,11 +85,11 @@ defineProps<{ title: string }>()
 }
 
 .hero-copy p {
-  margin: 7% 0 0;
+  margin: 9% 0 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3cqw;
+  font-size: 3.15cqw;
   letter-spacing: 0.16em;
   white-space: nowrap;
 }

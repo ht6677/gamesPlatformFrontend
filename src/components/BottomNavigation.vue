@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { Tabbar as VanTabbar, TabbarItem as VanTabbarItem } from 'vant'
-import navFrame from '@/assets/ui-kit-light/common/navigation/bottom-nav-frame-blank-2x.png'
-import navTeam from '@/assets/ui-kit-light/common/navigation/icons/team-exact-3x.png'
-import navTournament from '@/assets/ui-kit-light/common/navigation/icons/tournament-exact-3x.png'
-import navActivities from '@/assets/ui-kit-light/common/navigation/icons/activities-exact-3x.png'
-import navProfile from '@/assets/ui-kit-light/common/navigation/icons/profile-exact-3x.png'
+import navFrame from '@/assets/tournament-center/nav-frame.webp'
+import navTeam from '@/assets/tournament-center/nav-team.webp'
+import navTournament from '@/assets/tournament-center/nav-tournament.webp'
+import navActivities from '@/assets/tournament-center/nav-activities.webp'
+import navProfile from '@/assets/tournament-center/nav-profile.webp'
 
 export type PageKey = 'team' | 'tournament' | 'activities' | 'profile'
 
@@ -48,17 +48,18 @@ const items = [
   bottom: 0.3%;
   left: 1.05%;
   width: auto;
-  height: 8.55%;
-  padding: 0.4% 1.2% 0.2%;
+  height: 8.45%;
+  padding: 0.25% 1.2% 0.25%;
   overflow: hidden;
   border-radius: 999px;
-  background-color: transparent;
+  background-color: #f2f7ff;
   background-position: center;
   background-size: 100% 100%;
 }
 
 .bottom-navigation.is-overlay {
   opacity: 0;
+  background-color: transparent;
   background-image: none !important;
 }
 
@@ -69,28 +70,38 @@ const items = [
 }
 
 .bottom-navigation :deep(.van-tabbar-item__icon) {
-  width: clamp(42px, 12vw, 52px);
-  height: clamp(36px, 10.2vw, 44px);
-  margin: 0 auto -2px;
+  width: clamp(45px, 12.8vw, 55px);
+  height: clamp(39px, 11.2vw, 48px);
+  margin: -2px auto -4px;
 }
 
 .bottom-navigation :deep(.van-tabbar-item__icon img) {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  mix-blend-mode: multiply;
 }
 
 .bottom-navigation :deep(.van-tabbar-item__text) {
-  font-size: clamp(11px, 3vw, 13px);
-  font-weight: 700;
+  font-size: clamp(11px, 3.05vw, 13px);
+  font-weight: 800;
   line-height: 1;
   white-space: nowrap;
 }
 
 .bottom-navigation :deep(.van-tabbar-item--active) {
   color: #132b78;
-  background: radial-gradient(ellipse at 50% 58%, rgba(75, 132, 255, 0.22), transparent 68%);
+  background: radial-gradient(ellipse at 50% 82%, rgba(45, 112, 255, 0.28), transparent 64%);
+}
+
+.bottom-navigation :deep(.van-tabbar-item--active::after) {
+  content: '';
+  position: absolute;
+  right: 14%;
+  bottom: -2%;
+  left: 14%;
+  height: 3px;
+  background: radial-gradient(ellipse, #58c8ff 0, #347dff 42%, transparent 74%);
+  filter: drop-shadow(0 0 3px #6edfff);
 }
 
 .bottom-navigation :deep(.van-tabbar-item--active .van-tabbar-item__icon) {

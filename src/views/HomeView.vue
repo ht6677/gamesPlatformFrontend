@@ -2,12 +2,12 @@
 import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import BottomNavigation, { type PageKey } from '@/components/BottomNavigation.vue'
-import teamScreen from '@/assets/ui-reference/team-light-master.png'
-import tournamentScreen from '@/assets/ui-reference/tournament-light.png'
-import profileScreen from '@/assets/ui-reference/profile-light.png'
+import PageHeroHeader from '@/components/PageHeroHeader.vue'
+import TournamentCenter from '@/components/TournamentCenter.vue'
+import teamScreen from '@/assets/ui-reference/team-light-master.webp'
+import profileScreen from '@/assets/ui-reference/profile-light.webp'
 import createRoomOverlay from '@/assets/ui-reference/create-room-overlay.png'
 import iceBackground from '@/assets/ui-kit-light/common/background/ice-vortex-portrait.png'
-import penguin from '@/assets/ui-kit-light/common/mascot/penguin-team-exact-3x.png'
 import activitiesIcon from '@/assets/ui-kit-light/common/navigation/icons/activities-exact-3x.png'
 
 type Score = 100 | 200 | 500
@@ -28,7 +28,6 @@ const formError = ref('')
 
 const pageScreens: Partial<Record<PageKey, string>> = {
   team: teamScreen,
-  tournament: tournamentScreen,
   profile: profileScreen,
 }
 
@@ -78,8 +77,10 @@ function createRoom() {
 <template>
   <main class="app-shell">
     <section class="mobile-canvas" :class="{ 'activities-canvas': activePage === 'activities' }">
-      <template v-if="activeScreen">
-        <img class="reference-screen" :src="activeScreen" :alt="`${activePage} 页面`" />
+      <TournamentCenter v-if="activePage === 'tournament'" v-model:active-page="activePage" />
+
+      <template v-else-if="activeScreen">
+        <img :key="activePage" class="reference-screen" :src="activeScreen" :alt="`${activePage} 页面`" />
 
         <template v-if="activePage === 'team'">
           <button class="hotspot direct-hotspot" aria-label="直达房间" @click="joinRoom('886421')"></button>
@@ -91,15 +92,13 @@ function createRoom() {
           <button class="hotspot create-hotspot" aria-label="创建房间" @click="openCreateRoom"></button>
         </template>
 
-        <BottomNavigation v-model:active="activePage" overlay />
+        <PageHeroHeader :title="activePage === 'team' ? '组队大厅' : '个人中心'" />
+        <BottomNavigation v-model:active="activePage" />
       </template>
 
       <template v-else>
         <img class="activities-background" :src="iceBackground" alt="" />
-        <header class="activities-header">
-          <img :src="penguin" alt="九鼎电竞企鹅" />
-          <div><h1>活动资料</h1><p><i></i><span>九鼎电竞</span><i></i></p></div>
-        </header>
+        <PageHeroHeader title="活动资料" />
         <section class="coming-panel">
           <img :src="activitiesIcon" alt="" /><span>COMING SOON</span><h2>正在开发当中</h2><p>活动资料与赛事图鉴即将开放</p>
         </section>
@@ -164,12 +163,6 @@ function createRoom() {
 .activities-canvas { min-height: 0; isolation: isolate; }
 .activities-background { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .activities-canvas::after { content: ''; position: absolute; z-index: -1; inset: 0; background: linear-gradient(180deg,rgba(255,255,255,.02),rgba(231,241,255,.35)); }
-.activities-header { height: 16.3%; display: flex; align-items: flex-start; padding: 1.2% 4% 0 2.5%; }
-.activities-header > img { width: 24%; object-fit: contain; mix-blend-mode: multiply; }
-.activities-header > div { width: 42%; margin: 4% 0 0 1.5%; text-align: center; }
-.activities-header h1 { margin: 0; color: #0a2459; font-size: clamp(30px,8.1vw,35px); font-weight: 900; line-height: 1.08; letter-spacing: .08em; white-space: nowrap; text-shadow: 0 2px 0 #fff,0 3px 4px rgba(16,50,102,.25); }
-.activities-header p { margin: 8% 0 0; display: flex; align-items: center; justify-content: center; color: #122b72; font-size: clamp(15px,4vw,18px); letter-spacing: .17em; white-space: nowrap; }
-.activities-header p i { width: 13%; height: 1px; margin: 0 4%; background: #264a99; }
 .coming-panel { width: 88%; min-height: 47%; margin: 17% auto 0; padding: 8% 5%; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid rgba(129,166,221,.62); border-radius: 18px; background: rgba(255,255,255,.65); box-shadow: inset 0 0 28px rgba(112,164,232,.18),0 12px 32px rgba(50,82,130,.12); text-align: center; backdrop-filter: blur(5px); }
 .coming-panel > img { width: 34%; margin-bottom: 5%; mix-blend-mode: multiply; }
 .coming-panel > span { color: #5c7fbd; font-size: 11px; letter-spacing: .34em; }
